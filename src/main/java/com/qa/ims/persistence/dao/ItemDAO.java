@@ -68,7 +68,7 @@ public class ItemDAO implements Dao<Item> {
 	public Item create(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("INSERT INTO items(item_name) VALUES('" + item.getItem_name()
+			statement.executeUpdate("INSERT INTO items(item_name, price) VALUES('" + item.getItem_name() + "','" + item.getPrice() 
 					+ "')");
 			return readLatest();
 		} catch (Exception e) {
@@ -92,9 +92,9 @@ public class ItemDAO implements Dao<Item> {
 	}
 
 	/**
-	 * Updates a customer in the database
+	 * Updates an item in the database
 	 * 
-	 * @param customer - takes in a customer object, the id field will be used to
+	 * @param item - takes in a customer object, the id field will be used to
 	 *                 update that customer in the database
 	 * @return
 	 */
