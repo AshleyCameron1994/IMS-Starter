@@ -23,6 +23,8 @@ public class OrderDAO implements Dao<Order>{
 	@Override
 	public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
 		Long order_id = resultSet.getLong("order_id");
+//		Long order_item_id = resultSet.getLong("order_item_id");
+//		Long item_id = resultSet.getLong("item_id");
 		Long customer_id = resultSet.getLong("customer_id");
 		List<Item> items = readLines(resultSet.getLong("order_id"));
 		return new Order(order_id, customer_id, items);
