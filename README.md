@@ -33,21 +33,21 @@ Now need to set environment variables for the JDK.
 6. Add "%JAVA_HOME%\bin" to the end of the variable value, should end with a semi-colon initially.
 7. To test if this has worked enter cmd in windows search bar and type "java" and hit enter. Java will then run the executable file and the outcome should look like this:
 
-Usage: java [options] <mainclass> [args...]
-           (to execute a class)
-   or  java [options] -jar <jarfile> [args...]
-           (to execute a jar file)
-   or  java [options] -m <module>[/<mainclass>] [args...]
-       java [options] --module <module>[/<mainclass>] [args...]
-           (to execute the main class in a module)
-   or  java [options] <sourcefile> [args]
-           (to execute a single source-file program)
+	Usage: java [options] <mainclass> [args...]
+        	   (to execute a class)
+   	or  java [options] -jar <jarfile> [args...]
+        	   (to execute a jar file)
+   	or  java [options] -m <module>[/<mainclass>] [args...]
+       		java [options] --module <module>[/<mainclass>] [args...]
+        	   (to execute the main class in a module)
+  	 or  java [options] <sourcefile> [args]
+	           (to execute a single source-file program)
 
- Arguments following the main class, source file, -jar <jarfile>,
- -m or --module <module>/<mainclass> are passed as the arguments to
- main class.
+ 	Arguments following the main class, source file, -jar <jarfile>,
+ 	-m or --module <module>/<mainclass> are passed as the arguments to
+	 main class.
 
- where options include:
+ 	where options include:
 
     -cp <class search path of directories and zip/jar files>
     -classpath <class search path of directories and zip/jar files>
@@ -125,8 +125,8 @@ Usage: java [options] <mainclass> [args...]
                   prevent further argument file expansion
     --enable-preview
                   allow classes to depend on preview features of this release
-To specify an argument for a long option, you can use --<name>=<value> or
---<name> <value>.
+	To specify an argument for a long option, you can use --<name>=<value> or
+	--<name> <value>.
  
 
 ### Installing
@@ -229,7 +229,7 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 *For help in [Choosing a license](https://choosealicense.com/)*
 
 ## Acknowledgments
-Thank you to Vinesh, Pawel and to Piers the trainers who helped me with this project. Especially Pawle who gave me some code to use.
+Thank you to Vinesh, Pawel and to Piers the trainers who helped me with this project. Especially Pawel who gave me some code to use.
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc
