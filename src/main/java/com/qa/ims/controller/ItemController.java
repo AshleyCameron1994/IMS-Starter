@@ -39,15 +39,16 @@ public class ItemController implements CrudController<Item>{
 	/**
 	 * Creates an item by taking in user input
 	 */
+	
 	@Override
 	public Item create() {
 		LOGGER.info("Please enter an item name");
 		String item_name = utils.getString();
 		LOGGER.info("Please enter a price for item");
-		Float price = utils.getFloat();
-		Item customer = itemDAO.create(new Item(item_name, price));
+		Double price = utils.getDouble();
+		Item item = itemDAO.create(new Item(item_name, price));
 		LOGGER.info("Item created");
-		return customer;
+		return item;
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class ItemController implements CrudController<Item>{
 		LOGGER.info("Please enter item name");
 		String item_name = utils.getString();
 		LOGGER.info("Please enter a price");
-		Float price = utils.getFloat();
+		Double price = utils.getDouble();
 		Item item = itemDAO.update(new Item(item_id, item_name, price));
 		LOGGER.info("Item Updated");
 		return item;

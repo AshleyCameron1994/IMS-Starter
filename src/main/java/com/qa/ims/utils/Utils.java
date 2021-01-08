@@ -22,10 +22,6 @@ public class Utils {
 	public String getString() {
 		return scanner.nextLine();
 	}
-	
-//	public List getList() {
-//		return scanner.nextLine();
-//	}
 
 	public Double getDouble() {
 		String input = getString();
@@ -54,17 +50,17 @@ public class Utils {
 		return longInput;
 	}
 
-	public Float getFloat() {
+	public Double getDouble1() {
 		String input = getString();
-		Float floatInput = null;
+		Double doubleInput = null;
 		do {
 			try {
-				floatInput = Float.parseFloat(input);
+				doubleInput = Double.parseDouble(input);
 			} catch (NumberFormatException nfe) {
 				LOGGER.info("Error - Please enter number in price format");
 			}
-		} while (floatInput == null);
-		return floatInput;
+		} while (doubleInput == null);
+		return doubleInput;
 	
 	}
 	

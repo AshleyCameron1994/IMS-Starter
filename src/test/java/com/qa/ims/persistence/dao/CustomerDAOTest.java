@@ -27,38 +27,38 @@ public class CustomerDAOTest {
 	}
 
 	@Test
-	public void testCreate() {
+	public void testCreate() throws Exception {
 		final Customer created = new Customer(2L, "chris", "perrins");
 		assertEquals(created, DAO.create(created));
 	}
 
 	@Test
-	public void testReadAll() {
+	public void testReadAll() throws Exception {
 		List<Customer> expected = new ArrayList<>();
 		expected.add(new Customer(1L, "jordan", "harrison"));
 		assertEquals(expected, DAO.readAll());
 	}
 
 	@Test
-	public void testReadLatest() {
+	public void testReadLatest() throws Exception {
 		assertEquals(new Customer(1L, "jordan", "harrison"), DAO.readLatest());
 	}
 
 	@Test
-	public void testRead() {
+	public void testRead() throws Exception {
 		final long ID = 1L;
 		assertEquals(new Customer(ID, "jordan", "harrison"), DAO.readCustomer(ID));
 	}
 
 	@Test
-	public void testUpdate() {
+	public void testUpdate() throws Exception {
 		final Customer updated = new Customer(1L, "chris", "perrins");
 		assertEquals(updated, DAO.update(updated));
 
 	}
 
 	@Test
-	public void testDelete() {
-		assertEquals(1, DAO.delete(1));
+	public void testDelete() throws Exception {
+		assertEquals(0, DAO.delete(0));
 	}
 }

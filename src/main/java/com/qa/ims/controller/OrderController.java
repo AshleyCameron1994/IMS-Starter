@@ -4,9 +4,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.qa.ims.persistence.dao.ItemDAO;
+
 import com.qa.ims.persistence.dao.OrderDAO;
-import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.utils.Utils;
 
@@ -16,14 +15,13 @@ public class OrderController implements CrudController<Order>{
 
 	
 	private OrderDAO orderDAO;
-	private ItemDAO itemDAO;
 	private Utils utils;
 
-	public OrderController(OrderDAO orderDAO, Utils utils, ItemDAO itemDAO) {
+	public OrderController(OrderDAO orderDAO, Utils utils) {
 		super();
 		this.orderDAO = orderDAO;
 		this.utils = utils;
-		this.itemDAO = itemDAO;
+		
 	}
 
 	/**
@@ -35,9 +33,6 @@ public class OrderController implements CrudController<Order>{
 		Long customer_id = utils.getLong();
 		Order order = orderDAO.create(new Order(customer_id));
 		LOGGER.info("Order created");
-		LOGGER.info("Would you like to add another item to your basket? Yes or no:");
-		String newItem = utils.getString();
-		addItem(newItem);
 		return order;
 	}
 
@@ -68,21 +63,22 @@ public class OrderController implements CrudController<Order>{
 		return order;
 	}
 	
-	public List<Item> addItem(String newItem) {
-		if (newItem.toLowerCase().equals("yes")) {
-			List<Item> items = itemDAO.readAll();
-			for(Item item : items) {
-				LOGGER.info(item.toString());
-			}
-			
-			return items ;
-			
-		}else {
-			
-			return null;
-			
-		}
-	}
+//	public Order addItem(String newItem) {
+//		if (newItem.toLowerCase().equals("yes")) {
+//			LOGGER.info("what you would like to add to order");
+//			Long item_id = utils.getLong();
+//			List<Item> items = itemDAO.addItem(item_id);
+//			for(Item item : items) {
+//				LOGGER.info(item.toString());
+//			}
+//			return order;
+//			
+//		}else {
+//			
+//			return null;
+//			
+//		}
+//	}
 
 	@Override
 	public List<Order> readAll() {

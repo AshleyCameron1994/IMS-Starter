@@ -21,13 +21,14 @@ public class ItemDAO implements Dao<Item> {
 	public Item modelFromResultSet(ResultSet resultSet) throws SQLException {
 		Long item_id = resultSet.getLong("item_id");
 		String item_name = resultSet.getString("item_name");
-		return new Item(item_name, item_id);
+		Double price = resultSet.getDouble("price");
+		return new Item(item_id, item_name, price);
 	}
 
 	/**
-	 * Reads all customers from the database
+	 * Reads all items from the database
 	 * 
-	 * @return A list of customers
+	 * @return A list of items
 	 */
 	@Override
 	public List<Item> readAll() {
@@ -38,6 +39,7 @@ public class ItemDAO implements Dao<Item> {
 			while (resultSet.next()) {
 				items.add(modelFromResultSet(resultSet));
 			}
+			
 			return items;
 		} catch (SQLException e) {
 			LOGGER.debug(e);
@@ -60,16 +62,16 @@ public class ItemDAO implements Dao<Item> {
 	}
 
 	/**
-	 * Creates a customer in the database
+	 * Creates a item in the database
 	 * 
-	 * @param customer - takes in a customer object. id will be ignored
+	 * @param item - takes in a item object. id will be ignored
 	 */
 	@Override
 	public Item create(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("INSERT INTO items(item_name) VALUES('" + item.getItem_name()
-					+ "')");
+			statement.executeUpdate("INSERT INTO items(item_name, price) VALUES('" + item.getItem_name()
+					+ "','" + item.getPrice() + "')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e);
@@ -92,18 +94,18 @@ public class ItemDAO implements Dao<Item> {
 	}
 
 	/**
-	 * Updates a customer in the database
+	 * Updates a item in the database
 	 * 
-	 * @param customer - takes in a customer object, the id field will be used to
-	 *                 update that customer in the database
+	 * @param item - takes in a item object, the id field will be used to
+	 *                 update that item in the database
 	 * @return
 	 */
 	@Override
 	public Item update(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("UPDATE items SET item_name ='" + item.getItem_name()
-			 + "' where customer_id =" + item.getItem_id());
+			statement.executeUpdate("UPDATE items SET item_name ='" + item.getItem_name() + "', price= '" +
+			item.getPrice() + "' WHERE item_id =" + item.getItem_id());
 			return readItem(item.getItem_id());
 		} catch (Exception e) {
 			LOGGER.debug(e);
@@ -113,9 +115,9 @@ public class ItemDAO implements Dao<Item> {
 	}
 
 	/**
-	 * Deletes a customer in the database
+	 * Deletes a item in the database
 	 * 
-	 * @param id - id of the customer
+	 * @param id - id of the item
 	 */
 	@Override
 	public int delete(long item_id) {

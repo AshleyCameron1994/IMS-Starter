@@ -76,9 +76,6 @@ public class Order {
 		}
 		return "Here is your order: [order_id=" + order_id + ", item_id=" + item_id + ", items=" + items
 			 + str + " The total price is: " + price + "]";
-		
-		
-		
 	}
 
 }

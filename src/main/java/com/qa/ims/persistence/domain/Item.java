@@ -3,18 +3,17 @@ package com.qa.ims.persistence.domain;
 public class Item {
 	private Long item_id;
 	private String item_name;
-	private Float price;
+	private Double price;
 	
-	
-	
-	public Item(String item_name, float price) {
+	public Item(long item_id, String item_name, double price) {
 		super();
+		this.item_id = item_id;
 		this.item_name = item_name;
 		this.price = price;
 	}
-	public Item(long item_id, String item_name, float price) {
+	
+	public Item(String item_name, double price) {
 		super();
-		this.item_id = item_id;
 		this.item_name = item_name;
 		this.price = price;
 	}
@@ -30,10 +29,10 @@ public class Item {
 	public void setItem_name(String item_name) {
 		this.item_name = item_name;
 	}
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
